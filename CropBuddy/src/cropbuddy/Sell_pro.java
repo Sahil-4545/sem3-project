@@ -1,7 +1,21 @@
 package cropbuddy;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -57,21 +71,25 @@ public class Sell_pro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        category = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        textField1 = new java.awt.TextField();
+        product_name = new java.awt.TextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        textField2 = new java.awt.TextField();
-        textField3 = new java.awt.TextField();
+        quantity = new java.awt.TextField();
+        price_per_unit = new java.awt.TextField();
         jLabel7 = new javax.swing.JLabel();
-        textField5 = new java.awt.TextField();
+        product_description = new java.awt.TextField();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        price_unit = new javax.swing.JComboBox<>();
+        unit = new javax.swing.JComboBox<>();
+        upload = new javax.swing.JButton();
+        address = new javax.swing.JTextField();
+        Submit = new javax.swing.JButton();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        image = new javax.swing.JLabel();
+        jScrollBar1 = new javax.swing.JScrollBar();
+        jScrollPane1 = new javax.swing.JScrollPane();
 
         popupMenu1.setLabel("popupMenu1");
 
@@ -176,20 +194,27 @@ public class Sell_pro extends javax.swing.JFrame {
         jLabel3.setText("Enter product details");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 350, 50));
 
-        jComboBox1.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select category--", "vegetable", "fruit", "seeds" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        category.setBackground(new java.awt.Color(0, 0, 0));
+        category.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
+        category.setForeground(new java.awt.Color(255, 255, 255));
+        category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select category--", "vegetable", "fruit", "seeds" }));
+        category.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                categoryActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 240, 30));
+        jPanel1.add(category, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 240, 30));
 
         jLabel4.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Category");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 110, 30));
-        jPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 240, 30));
+
+        product_name.setBackground(new java.awt.Color(0, 0, 0));
+        product_name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        product_name.setFont(new java.awt.Font("Thunder", 0, 20)); // NOI18N
+        product_name.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(product_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 240, 30));
 
         jLabel5.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -201,74 +226,125 @@ public class Sell_pro extends javax.swing.JFrame {
         jLabel6.setText("product name:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 120, 30));
 
-        textField2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPanel1.add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 240, 30));
-        jPanel1.add(textField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 240, 30));
+        quantity.setBackground(new java.awt.Color(0, 0, 0));
+        quantity.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        quantity.setFont(new java.awt.Font("Thunder", 0, 20)); // NOI18N
+        quantity.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 240, 30));
+
+        price_per_unit.setBackground(new java.awt.Color(0, 0, 0));
+        price_per_unit.setFont(new java.awt.Font("Thunder", 0, 20)); // NOI18N
+        price_per_unit.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(price_per_unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 240, 30));
 
         jLabel7.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("upload photo");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 540, 130, 40));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 850, 80, 40));
 
-        textField5.addActionListener(new java.awt.event.ActionListener() {
+        product_description.setBackground(new java.awt.Color(0, 0, 0));
+        product_description.setFont(new java.awt.Font("Thunder", 0, 20)); // NOI18N
+        product_description.setForeground(new java.awt.Color(255, 255, 255));
+        product_description.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField5ActionPerformed(evt);
+                product_descriptionActionPerformed(evt);
             }
         });
-        jPanel1.add(textField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 250, 110));
+        jPanel1.add(product_description, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 250, 110));
 
         jLabel8.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("price per unit:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 130, 20));
 
-        jComboBox3.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "kg", "gm", "ton", " " }));
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, 70, 30));
+        price_unit.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
+        price_unit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select unit--", "kg", "gm", "ton", " " }));
+        jPanel1.add(price_unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, 120, 30));
 
-        jComboBox2.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "kg", "gm", "ton", " " }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 70, 30));
+        unit.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
+        unit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select unit--", "kg", "gm", "ton", " " }));
+        jPanel1.add(unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, -1, 30));
 
-        jButton1.setFont(new java.awt.Font("Thunder", 1, 14)); // NOI18N
-        jButton1.setText("UPLOAD");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        upload.setFont(new java.awt.Font("Thunder", 1, 14)); // NOI18N
+        upload.setText("UPLOAD");
+        upload.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                uploadMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 550, 130, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 550, 250, -1));
+        upload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadActionPerformed(evt);
+            }
+        });
+        jPanel1.add(upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 850, 140, 40));
+        jPanel1.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 850, 250, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 255, 153));
-        jButton2.setFont(new java.awt.Font("Thunder", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("SUBMIT");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 630, 140, 40));
+        Submit.setBackground(new java.awt.Color(0, 255, 153));
+        Submit.setFont(new java.awt.Font("Thunder", 1, 24)); // NOI18N
+        Submit.setForeground(new java.awt.Color(0, 0, 0));
+        Submit.setText("SUBMIT");
+        Submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 910, 140, 40));
+
+        jDesktopPane1.setBackground(new java.awt.Color(0, 0, 0));
+        jDesktopPane1.add(image);
+        image.setBounds(0, 0, 370, 240);
+
+        jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, 370, 240));
+        jPanel1.add(jScrollBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 0, -1, 1200));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setOpaque(true);
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 140, 540, 1080));
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 840, 850);
+        jPanel1.setBounds(0, 0, 1200, 1200);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_categoryActionPerformed
 
-    private void textField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField5ActionPerformed
+    private void product_descriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_product_descriptionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField5ActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    }//GEN-LAST:event_product_descriptionActionPerformed
+    File f = null;
+    String path = null;
+    private ImageIcon format = null;
+    String fname = null;
+    int s = 0;
+    byte[] pimage = null;
+    private void uploadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_uploadMouseClicked
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null); //showOpenDialog() is used to open a dialog box.
-        File f =chooser.getSelectedFile();
-        String filename = f.getAbsolutePath();
-        jTextField1.setText(filename);
-    }//GEN-LAST:event_jButton1MouseClicked
-
+        FileNameExtensionFilter fnf = new FileNameExtensionFilter("PNG JPG AND JPEG","jpg","png","jpeg");
+        chooser.addChoosableFileFilter(fnf); 
+        int load; //showOpenDialog() is used to open a dialog box.
+        load = chooser.showOpenDialog(null);
+        
+        if(load == chooser.APPROVE_OPTION){
+            f = chooser.getSelectedFile();
+            path = f.getAbsolutePath();
+            address.setText(path);
+            ImageIcon i1 = new ImageIcon(path);
+            Image img = i1.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+            image.setIcon(new ImageIcon(img));
+        }
+       
+     
+    }//GEN-LAST:event_uploadMouseClicked
+     
+   
+        
+    
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox4ActionPerformed
@@ -280,6 +356,70 @@ public class Sell_pro extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
+        // TODO add your handling code here:
+        String Category,Product_name,Quantity,Unit,Price_per_unit,Price_unit,Product_description,query;
+        String SUrl,SUser,SPass;
+        SUrl = "jdbc:MySQL://localhost:3306/sell_pro";
+        SUser = "root";
+        SPass = "1234567890";
+        try{
+            Class.forName("com.mysql.jdbc.Driver"); 
+           Connection con = DriverManager.getConnection(SUrl,SUser,SPass);
+           Statement st = con.createStatement();
+           if("--select category--".equals(category.getSelectedItem().toString())){
+               JOptionPane.showMessageDialog(new JFrame(), "Category is require", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+               
+           }else if("".equals(product_name.getText())){
+               JOptionPane.showMessageDialog(new JFrame(), "Product Name is require", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+           }else if("".equals(quantity.getText())){
+               JOptionPane.showMessageDialog(new JFrame(), "Quantity is require", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+           }else if("--select unit--".equals(unit.getSelectedItem().toString())){
+               JOptionPane.showMessageDialog(new JFrame(), "Unit is require", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+           }else if("".equals(price_per_unit.getText())){
+               JOptionPane.showMessageDialog(new JFrame(), "Price Per Unit is require", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+           }else if("--select unit--".equals(price_unit.getSelectedItem().toString())){
+               JOptionPane.showMessageDialog(new JFrame(), "Price Unit is require", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+           }else if("".equals(product_description.getText())){
+               JOptionPane.showMessageDialog(new JFrame(), "Product Description is require", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+           }else{
+               Category = category.getSelectedItem().toString();
+               Product_name = product_name.getText();
+               Quantity = quantity.getText();
+               Unit = unit.getSelectedItem().toString();
+               Price_per_unit = price_per_unit.getText();
+               Price_unit = price_unit.getSelectedItem().toString();
+               Product_description = product_description.getText();
+               
+               query = "INSERT INTO product(category,pro_name,quatity,unit,price_per_unit,pro_descrip,price_unit)"+
+                       "VALUES('"+Category+"','"+Product_name+"','"+Quantity+"','"+Unit+"','"+Price_per_unit+"','"+Product_description+"','"+Price_unit+"')";
+               st.execute(query);
+               category.setSelectedItem("--select category--");
+               product_name.setText("");
+               quantity.setText("");
+               unit.setSelectedItem("--select unit--");
+               price_per_unit.setText("");
+               price_unit.setSelectedItem("--select unit--");
+               product_description.setText("");
+               showMessageDialog(null, "Product Added Successfully!");
+           }
+        }catch (Exception e){
+            System.out.println("Error" + e.getMessage());
+        }
+        
+    }//GEN-LAST:event_SubmitActionPerformed
+
+    private void uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uploadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,16 +455,16 @@ public class Sell_pro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Submit;
+    private javax.swing.JTextField address;
+    private javax.swing.JComboBox<String> category;
+    private javax.swing.JLabel image;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -345,16 +485,20 @@ public class Sell_pro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
     private java.awt.PopupMenu popupMenu1;
-    private java.awt.TextField textField1;
-    private java.awt.TextField textField2;
-    private java.awt.TextField textField3;
+    private java.awt.TextField price_per_unit;
+    private javax.swing.JComboBox<String> price_unit;
+    private java.awt.TextField product_description;
+    private java.awt.TextField product_name;
+    private java.awt.TextField quantity;
     private java.awt.TextField textField4;
-    private java.awt.TextField textField5;
     private java.awt.TextField textField6;
     private java.awt.TextField textField7;
     private java.awt.TextField textField8;
+    private javax.swing.JComboBox<String> unit;
+    private javax.swing.JButton upload;
     // End of variables declaration//GEN-END:variables
 }

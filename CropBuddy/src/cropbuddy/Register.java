@@ -134,7 +134,7 @@ public class Register extends javax.swing.JFrame {
         SPass = "1234567890";
         
         try{
-           Class.forName("com.mysql.cj.jdbc.Driver"); 
+           Class.forName("com.mysql.jdbc.Driver"); 
            Connection con = DriverManager.getConnection(SUrl,SUser,SPass);
            Statement st = con.createStatement();
            if("".equals(username.getText())){
@@ -156,7 +156,7 @@ public class Register extends javax.swing.JFrame {
                Email = email.getText();
                Password = password.getText();
                System.out.println(Password);
-               query = "INSERT INTO user(username,mobileno,Email,Password)"+
+               query = "INSERT INTO user(username,mobileno,email,password)"+
                        "VALUES('"+Username+"', '"+mobile_no+"' , '"+Email+"' , '"+Password+"')";
                 st.execute(query);
                 username.setText("");

@@ -37,7 +37,6 @@ public class search_product extends javax.swing.JFrame {
         fertilizerbtn = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         vegeTab = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -61,121 +60,80 @@ public class search_product extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         vegetablebtn.setFont(new java.awt.Font("Georgia", 1, 20)); // NOI18N
+        vegetablebtn.setForeground(new java.awt.Color(0, 0, 0));
         vegetablebtn.setText("VEGETABLES  |");
         vegetablebtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 vegetablebtnMouseClicked(evt);
             }
         });
+        jPanel2.add(vegetablebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 110, -1, -1));
 
         fruitsbtn.setFont(new java.awt.Font("Georgia", 1, 20)); // NOI18N
+        fruitsbtn.setForeground(new java.awt.Color(0, 0, 0));
         fruitsbtn.setText("FRUITS  |");
         fruitsbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fruitsbtnMouseClicked(evt);
             }
         });
+        jPanel2.add(fruitsbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 110, -1, -1));
 
         seedsbtn.setFont(new java.awt.Font("Georgia", 1, 20)); // NOI18N
+        seedsbtn.setForeground(new java.awt.Color(0, 0, 0));
         seedsbtn.setText("SEEDS  |");
         seedsbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 seedsbtnMouseClicked(evt);
             }
         });
+        jPanel2.add(seedsbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(501, 110, -1, -1));
 
         pestbtn.setFont(new java.awt.Font("Georgia", 1, 20)); // NOI18N
+        pestbtn.setForeground(new java.awt.Color(0, 0, 0));
         pestbtn.setText("PESTICIDES   |");
         pestbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pestbtnMouseClicked(evt);
             }
         });
+        jPanel2.add(pestbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(596, 110, -1, -1));
 
         fertilizerbtn.setFont(new java.awt.Font("Georgia", 1, 20)); // NOI18N
+        fertilizerbtn.setForeground(new java.awt.Color(0, 0, 0));
         fertilizerbtn.setText("FERTILIZERS");
         fertilizerbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fertilizerbtnMouseClicked(evt);
             }
         });
+        jPanel2.add(fertilizerbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(756, 110, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Georgia", 1, 20)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("HOME  |");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vegetablebtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fruitsbtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(seedsbtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pestbtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fertilizerbtn)))
-                .addContainerGap(298, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(vegetablebtn)
-                    .addComponent(fruitsbtn)
-                    .addComponent(seedsbtn)
-                    .addComponent(fertilizerbtn)
-                    .addComponent(pestbtn)
-                    .addComponent(jLabel6))
-                .addContainerGap())
-        );
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 110, -1, -1));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 42, 687, 42));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 140));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("vegetable tab");
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(357, 357, 357)
-                .addComponent(jLabel1)
-                .addContainerGap(600, Short.MAX_VALUE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addComponent(jLabel1)
-                .addContainerGap(642, Short.MAX_VALUE))
-        );
+        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 182, -1, -1));
 
         javax.swing.GroupLayout vegeTabLayout = new javax.swing.GroupLayout(vegeTab);
         vegeTab.setLayout(vegeTabLayout);
@@ -425,7 +383,6 @@ public class search_product extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

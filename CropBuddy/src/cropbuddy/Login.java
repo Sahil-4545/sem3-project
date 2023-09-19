@@ -190,7 +190,7 @@ public class Login extends javax.swing.JFrame {
         SPass = "1234567890";
         int notFound = 0;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(SUrl, SUser, SPass);
             Statement st = con.createStatement();
             if("".equals(username.getText())){
@@ -207,7 +207,7 @@ public class Login extends javax.swing.JFrame {
        
             ResultSet rs = st.executeQuery(query);
             while(rs.next()){
-                passDb = rs.getString("Password");
+                passDb = rs.getString("password");
                 notFound = 1;
             }
             if(notFound == 1 && Password.equals(passDb)){
