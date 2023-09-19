@@ -49,8 +49,10 @@ public class admin_page extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         add_prod = new javax.swing.JPanel();
         kGradientPanel5 = new keeptoo.KGradientPanel();
+        kGradientPanel1 = new keeptoo.KGradientPanel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        fertilizer = new javax.swing.JTextField();
         update_info = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         manage_admin = new javax.swing.JPanel();
@@ -76,29 +78,29 @@ public class admin_page extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 60));
 
-        innerPane.setBackground(new java.awt.Color(241, 255, 255));
+        innerPane.setBackground(new java.awt.Color(102, 255, 255));
         innerPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("The Bold Font", 0, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("FEEDS");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 22, -1, -1));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 30));
 
-        jLabel11.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("The Bold Font", 0, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("   New order Received.");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 62, -1, -1));
 
         jLabel12.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel12.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("The Bold Font", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("just Now");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 64, -1, -1));
 
-        innerPane.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 320, 290));
+        innerPane.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 320, 290));
 
         jPanel8.setBackground(new java.awt.Color(255, 153, 153));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -163,33 +165,28 @@ public class admin_page extends javax.swing.JFrame {
 
         kGradientPanel5.setkEndColor(new java.awt.Color(255, 255, 255));
         kGradientPanel5.setkStartColor(new java.awt.Color(255, 255, 255));
+        kGradientPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel14.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setFont(new java.awt.Font("The Bold Font", 1, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Add Products");
+        kGradientPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, 60));
 
-        jLabel15.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        jLabel15.setText("update governmnt policies");
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Thunder", 0, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Add");
+        kGradientPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 90, 30));
 
-        javax.swing.GroupLayout kGradientPanel5Layout = new javax.swing.GroupLayout(kGradientPanel5);
-        kGradientPanel5.setLayout(kGradientPanel5Layout);
-        kGradientPanel5Layout.setHorizontalGroup(
-            kGradientPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel5Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addGroup(kGradientPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel14))
-                .addContainerGap(620, Short.MAX_VALUE))
-        );
-        kGradientPanel5Layout.setVerticalGroup(
-            kGradientPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(kGradientPanel5Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jLabel14)
-                .addGap(50, 50, 50)
-                .addComponent(jLabel15)
-                .addContainerGap(570, Short.MAX_VALUE))
-        );
+        fertilizer.setBackground(new java.awt.Color(255, 255, 255));
+        fertilizer.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
+        fertilizer.setForeground(new java.awt.Color(0, 0, 0));
+        fertilizer.setToolTipText("Fertililzer Name");
+        kGradientPanel1.add(fertilizer, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 210, 40));
+
+        kGradientPanel5.add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 750));
 
         javax.swing.GroupLayout add_prodLayout = new javax.swing.GroupLayout(add_prod);
         add_prod.setLayout(add_prodLayout);
@@ -451,14 +448,15 @@ public class admin_page extends javax.swing.JFrame {
     private javax.swing.JPanel dashboardTab;
     private javax.swing.JLabel dashboardbtn;
     private javax.swing.JLabel editinfobtn;
+    private javax.swing.JTextField fertilizer;
     private javax.swing.JPanel innerPane;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -480,6 +478,7 @@ public class admin_page extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private keeptoo.KGradientPanel kGradientPanel1;
     private keeptoo.KGradientPanel kGradientPanel5;
     private javax.swing.JLabel logoutbtn;
     private javax.swing.JPanel manage_admin;
