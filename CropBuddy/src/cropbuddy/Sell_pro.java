@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -34,6 +35,7 @@ public class Sell_pro extends javax.swing.JFrame {
      */
     public Sell_pro() {
         initComponents();
+        
     }
 
     /**
@@ -68,9 +70,12 @@ public class Sell_pro extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        kGradientPanel1 = new keeptoo.KGradientPanel();
+        jLabel7 = new javax.swing.JLabel();
+        upload = new javax.swing.JButton();
+        address = new javax.swing.JTextField();
+        Submit = new javax.swing.JButton();
         category = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         product_name = new java.awt.TextField();
@@ -78,18 +83,15 @@ public class Sell_pro extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         quantity = new java.awt.TextField();
         price_per_unit = new java.awt.TextField();
-        jLabel7 = new javax.swing.JLabel();
         product_description = new java.awt.TextField();
         jLabel8 = new javax.swing.JLabel();
         price_unit = new javax.swing.JComboBox<>();
         unit = new javax.swing.JComboBox<>();
-        upload = new javax.swing.JButton();
-        address = new javax.swing.JTextField();
-        Submit = new javax.swing.JButton();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        kGradientPanel2 = new keeptoo.KGradientPanel();
         image = new javax.swing.JLabel();
-        jScrollBar1 = new javax.swing.JScrollBar();
-        jScrollPane1 = new javax.swing.JScrollPane();
 
         popupMenu1.setLabel("popupMenu1");
 
@@ -178,94 +180,25 @@ public class Sell_pro extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("The Bold Font", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("SELL PRODUCT");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 300, 55));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setAutoscrolls(true);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1200, 1200));
 
-        jLabel2.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("quantity:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 70, 30));
-
-        jLabel3.setFont(new java.awt.Font("The Bold Font", 0, 30)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Enter product details");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 350, 50));
-
-        category.setBackground(new java.awt.Color(0, 0, 0));
-        category.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
-        category.setForeground(new java.awt.Color(255, 255, 255));
-        category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select category--", "vegetable", "fruit", "seeds" }));
-        category.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoryActionPerformed(evt);
-            }
-        });
-        jPanel1.add(category, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 240, 30));
-
-        jLabel4.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Category");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 110, 30));
-
-        product_name.setBackground(new java.awt.Color(0, 0, 0));
-        product_name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        product_name.setFont(new java.awt.Font("Thunder", 0, 20)); // NOI18N
-        product_name.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(product_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 240, 30));
-
-        jLabel5.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("product description:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 170, 40));
-
-        jLabel6.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("product name:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 120, 30));
-
-        quantity.setBackground(new java.awt.Color(0, 0, 0));
-        quantity.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        quantity.setFont(new java.awt.Font("Thunder", 0, 20)); // NOI18N
-        quantity.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 240, 30));
-
-        price_per_unit.setBackground(new java.awt.Color(0, 0, 0));
-        price_per_unit.setFont(new java.awt.Font("Thunder", 0, 20)); // NOI18N
-        price_per_unit.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(price_per_unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 240, 30));
+        kGradientPanel1.setkEndColor(new java.awt.Color(0, 0, 0));
+        kGradientPanel1.setkGradientFocus(1000);
+        kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
+        kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("upload photo");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 850, 80, 40));
+        kGradientPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, 80, 40));
 
-        product_description.setBackground(new java.awt.Color(0, 0, 0));
-        product_description.setFont(new java.awt.Font("Thunder", 0, 20)); // NOI18N
-        product_description.setForeground(new java.awt.Color(255, 255, 255));
-        product_description.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                product_descriptionActionPerformed(evt);
-            }
-        });
-        jPanel1.add(product_description, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 250, 110));
-
-        jLabel8.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("price per unit:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 130, 20));
-
-        price_unit.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
-        price_unit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select unit--", "kg", "gm", "ton", " " }));
-        jPanel1.add(price_unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, 120, 30));
-
-        unit.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
-        unit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select unit--", "kg", "gm", "ton", " " }));
-        jPanel1.add(unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, -1, 30));
-
-        upload.setFont(new java.awt.Font("Thunder", 1, 14)); // NOI18N
+        upload.setBackground(new java.awt.Color(255, 255, 255));
+        upload.setFont(new java.awt.Font("Thunder", 1, 18)); // NOI18N
+        upload.setForeground(new java.awt.Color(0, 0, 0));
         upload.setText("UPLOAD");
         upload.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -277,8 +210,11 @@ public class Sell_pro extends javax.swing.JFrame {
                 uploadActionPerformed(evt);
             }
         });
-        jPanel1.add(upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 850, 140, 40));
-        jPanel1.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 850, 250, -1));
+        kGradientPanel1.add(upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 650, 140, 40));
+
+        address.setBackground(new java.awt.Color(255, 255, 255));
+        address.setForeground(new java.awt.Color(0, 0, 0));
+        kGradientPanel1.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 660, 250, -1));
 
         Submit.setBackground(new java.awt.Color(0, 255, 153));
         Submit.setFont(new java.awt.Font("Thunder", 1, 24)); // NOI18N
@@ -289,22 +225,108 @@ public class Sell_pro extends javax.swing.JFrame {
                 SubmitActionPerformed(evt);
             }
         });
-        jPanel1.add(Submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 910, 140, 40));
+        kGradientPanel1.add(Submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 700, 140, 50));
 
-        jDesktopPane1.setBackground(new java.awt.Color(0, 0, 0));
-        jDesktopPane1.add(image);
-        image.setBounds(0, 0, 370, 240);
+        category.setBackground(new java.awt.Color(255, 255, 255));
+        category.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
+        category.setForeground(new java.awt.Color(0, 0, 0));
+        category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select category--", "vegetable", "fruit", "seeds" }));
+        category.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryActionPerformed(evt);
+            }
+        });
+        kGradientPanel1.add(category, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 150, 240, 30));
 
-        jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, 370, 240));
-        jPanel1.add(jScrollBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 0, -1, 1200));
+        jLabel4.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Category");
+        kGradientPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 150, 70, 30));
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setOpaque(true);
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 140, 540, 1080));
+        product_name.setBackground(new java.awt.Color(255, 255, 255));
+        product_name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        product_name.setFont(new java.awt.Font("Source Sans Pro Black", 0, 20)); // NOI18N
+        product_name.setForeground(new java.awt.Color(0, 0, 0));
+        kGradientPanel1.add(product_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 200, 240, 30));
+
+        jLabel5.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("product description:");
+        kGradientPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 360, 120, 40));
+
+        jLabel6.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("product name:");
+        kGradientPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, 90, 30));
+
+        quantity.setBackground(new java.awt.Color(255, 255, 255));
+        quantity.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        quantity.setFont(new java.awt.Font("Source Sans Pro Black", 0, 20)); // NOI18N
+        quantity.setForeground(new java.awt.Color(0, 0, 0));
+        kGradientPanel1.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 250, 240, 30));
+
+        price_per_unit.setBackground(new java.awt.Color(255, 255, 255));
+        price_per_unit.setFont(new java.awt.Font("Source Sans Pro Black", 0, 20)); // NOI18N
+        price_per_unit.setForeground(new java.awt.Color(0, 0, 0));
+        kGradientPanel1.add(price_per_unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 300, 240, 30));
+
+        product_description.setBackground(new java.awt.Color(255, 255, 255));
+        product_description.setFont(new java.awt.Font("Source Sans Pro Black", 0, 20)); // NOI18N
+        product_description.setForeground(new java.awt.Color(0, 0, 0));
+        product_description.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                product_descriptionActionPerformed(evt);
+            }
+        });
+        kGradientPanel1.add(product_description, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 360, 240, 30));
+
+        jLabel8.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("price per unit:");
+        kGradientPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, 80, 20));
+
+        price_unit.setBackground(new java.awt.Color(255, 255, 255));
+        price_unit.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
+        price_unit.setForeground(new java.awt.Color(0, 0, 0));
+        price_unit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select unit--", "kg", "gm", "ton", " " }));
+        kGradientPanel1.add(price_unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 300, 120, 30));
+
+        unit.setBackground(new java.awt.Color(255, 255, 255));
+        unit.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
+        unit.setForeground(new java.awt.Color(0, 0, 0));
+        unit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select unit--", "kg", "gm", "ton", " " }));
+        kGradientPanel1.add(unit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 250, -1, 30));
+
+        jLabel1.setFont(new java.awt.Font("The Bold Font", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("enter your product");
+        kGradientPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, 390, 60));
+
+        jLabel2.setFont(new java.awt.Font("The Bold Font", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Sell product");
+        kGradientPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 250, 60));
+
+        jLabel3.setFont(new java.awt.Font("Thunder", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("quantity");
+        kGradientPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 260, -1, -1));
+
+        kGradientPanel2.setkEndColor(new java.awt.Color(0, 0, 0));
+        kGradientPanel2.setkStartColor(new java.awt.Color(255, 255, 255));
+        kGradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        image.setBackground(new java.awt.Color(40, 40, 40));
+        kGradientPanel2.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 200));
+
+        kGradientPanel1.add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 420, 200, 200));
+
+        jScrollPane1.setViewportView(kGradientPanel1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2000, 2000));
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1200, 1200);
+        jPanel1.setBounds(0, 0, 2000, 2000);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -318,10 +340,7 @@ public class Sell_pro extends javax.swing.JFrame {
     }//GEN-LAST:event_product_descriptionActionPerformed
     File f = null;
     String path = null;
-    private ImageIcon format = null;
-    String fname = null;
-    int s = 0;
-    byte[] pimage = null;
+    
     private void uploadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_uploadMouseClicked
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser();
@@ -359,7 +378,7 @@ public class Sell_pro extends javax.swing.JFrame {
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
         // TODO add your handling code here:
-        String Category,Product_name,Quantity,Unit,Price_per_unit,Price_unit,Product_description,query;
+        String Category,Product_name,Quantity,Unit,Price_per_unit,Price_unit,Product_description;
         String SUrl,SUser,SPass;
         SUrl = "jdbc:MySQL://localhost:3306/sell_pro";
         SUser = "root";
@@ -367,7 +386,7 @@ public class Sell_pro extends javax.swing.JFrame {
         try{
             Class.forName("com.mysql.jdbc.Driver"); 
            Connection con = DriverManager.getConnection(SUrl,SUser,SPass);
-           Statement st = con.createStatement();
+            PreparedStatement pst = con.prepareStatement("INSERT INTO product(category,pro_name,quatity,unit,price_per_unit,price_unit,pro_descrip,photo)VALUES(?,?,?,?,?,?,?,?)");
            if("--select category--".equals(category.getSelectedItem().toString())){
                JOptionPane.showMessageDialog(new JFrame(), "Category is require", "Error",
                         JOptionPane.ERROR_MESSAGE);
@@ -398,10 +417,16 @@ public class Sell_pro extends javax.swing.JFrame {
                Price_per_unit = price_per_unit.getText();
                Price_unit = price_unit.getSelectedItem().toString();
                Product_description = product_description.getText();
+               InputStream is = new FileInputStream(f);
+               pst.setString(1, Category);
+               pst.setString(2, Product_name);
+               pst.setString(3, Quantity);
+               pst.setString(4, Unit);
+               pst.setString(5, Price_per_unit);
+               pst.setString(6, Price_unit);
+               pst.setString(7,  Product_description);
+               pst.setBlob(8, is);
                
-               query = "INSERT INTO product(category,pro_name,quatity,unit,price_per_unit,pro_descrip,price_unit)"+
-                       "VALUES('"+Category+"','"+Product_name+"','"+Quantity+"','"+Unit+"','"+Price_per_unit+"','"+Product_description+"','"+Price_unit+"')";
-               st.execute(query);
                category.setSelectedItem("--select category--");
                product_name.setText("");
                quantity.setText("");
@@ -409,7 +434,12 @@ public class Sell_pro extends javax.swing.JFrame {
                price_per_unit.setText("");
                price_unit.setSelectedItem("--select unit--");
                product_description.setText("");
-               showMessageDialog(null, "Product Added Successfully!");
+               image.setIcon(new ImageIcon());
+               address.setText("");
+               int inserted = pst.executeUpdate();
+               if(inserted > 0){
+                   JOptionPane.showMessageDialog(null, "Product Added Successfully!");
+               }
            }
         }catch (Exception e){
             System.out.println("Error" + e.getMessage());
@@ -464,7 +494,6 @@ public class Sell_pro extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -485,9 +514,10 @@ public class Sell_pro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
+    private keeptoo.KGradientPanel kGradientPanel1;
+    private keeptoo.KGradientPanel kGradientPanel2;
     private java.awt.PopupMenu popupMenu1;
     private java.awt.TextField price_per_unit;
     private javax.swing.JComboBox<String> price_unit;
